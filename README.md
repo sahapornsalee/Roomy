@@ -1,17 +1,85 @@
-# roomy_app
+# 🏢 Roomy - Dormitory Management System
+**Roomy** คือแอปพลิเคชันบริหารจัดการหอพักและอพาร์ตเมนต์แบบครบวงจร พัฒนาด้วย **Flutter** และใช้ **Firebase** 
+เป็นฐานข้อมูลหลักแบบเรียลไทม์ ออกแบบมาเพื่อแก้ไขปัญหาการจัดการหอพักด้วยเอกสารกระดาษ ช่วยให้เจ้าของหอพักและผู้เช่าสามารถสื่อสารและทำธุรกรรมต่างๆ ได้อย่างรวดเร็วและมีประสิทธิภาพ
+## ✨ ฟีเจอร์หลัก (Key Features)
+แอปพลิเคชันแบ่งการทำงานออกตามบทบาทของผู้ใช้งาน (Role-based):
+**👑 สำหรับเจ้าของหอพัก (Owner)**
+* **จัดการห้องพัก:** ดูสถานะห้องว่าง/มีผู้เช่า เพิ่มและแก้ไขรายละเอียดห้องพัก
+* **ระบบบิลและการชำระเงิน:** จัดการยอดค่าน้ำ-ค่าไฟ ตรวจสอบและอนุมัติสลิปโอนเงิน
+* **การจัดการไฟล์รูปภาพ:** ดึงรูปภาพห้องพักและสลิปโอนเงินผ่านระบบ **Google Drive URL Mapping** (ไม่เปลืองพื้นที่ฐานข้อมูล)
+* **จัดการพื้นที่ส่วนกลาง:** ตรวจสอบและจัดการคำขอจองพื้นที่ส่วนกลาง (เช่น ฟิตเนส, ห้องสมุด)
 
-A new Flutter project.
+**👤 สำหรับผู้เช่า (Tenant)**
+* **ข้อมูลส่วนตัว:** ตรวจสอบข้อมูลห้องพักและยอดเงินค้างชำระแบบเรียลไทม์
+* **แจ้งชำระเงิน:** แนบลิงก์รูปภาพสลิปโอนเงินเพื่อส่งให้เจ้าของหอพักตรวจสอบ
+* **จองพื้นที่ส่วนกลาง:** ระบบจองห้องส่วนกลางพร้อมระบบป้องกันการจองซ้อนทับกัน (Transaction Locking)
+* **แจ้งซ่อม:** ส่งคำขอแจ้งซ่อมและติดตามสถานะจากผู้ดูแล
+---
+## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
+* **Frontend:** Flutter & Dart
+* **Backend & Database:** Firebase (Cloud Firestore, Firebase Authentication)
+* **Storage Solution:** Google Drive (จัดเก็บรูปภาพและใช้ Direct URL)
+* **IDE:** Android Studio / VS Code
+---
+## 🚀 สิ่งที่ต้องเตรียมก่อนเริ่มงาน (Prerequisites)
+1.  ติดตั้ง [Flutter SDK](https://docs.flutter.dev/get-started/install)
+2.  ติดตั้ง [Android Studio](https://developer.android.com/studio) สำหรับรัน Emulator และทดสอบหน้าจอ
+3.  มีบัญชี Google สำหรับเข้าใช้งาน Firebase Console และ Google Drive
+---
+## ⚙️ การติดตั้งและการตั้งค่า (Installation & Setup)
+ทำตามขั้นตอนด้านล่างนี้เพื่อรันโปรเจกต์ Roomy ในเครื่องของคุณ:
+### 1. โคลนโปรเจกต์และติดตั้งแพ็กเกจ
+```bash
+# 1. โคลน Repository หลักทั้งหมดลงมาที่เครื่อง
+git clone https://github.com/sahapornsalee/Roomy.git
 
-## Getting Started
+# 2. เข้าไปในโฟลเดอร์โปรเจกต์ Flutter (ตรวจสอบตัวพิมพ์เล็ก-ใหญ่ให้ตรงกับชื่อโฟลเดอร์จริง)
+cd Roomy/roomy_app
 
-This project is a starting point for a Flutter application.
+# 3. ดึงแพ็กเกจและ Dependencies ต่างๆ ของ Flutter มาติดตั้ง
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+2. การตั้งค่า Firebase (สำคัญมาก)
+โปรเจกต์นี้ใช้ Firebase เป็นสถาปัตยกรรมหลัก คุณต้องนำไฟล์ตั้งค่ามาใส่ในโปรเจกต์:
+ไปที่ Firebase Console สร้างโปรเจกต์ใหม่
+ลงทะเบียนแอปพลิเคชัน Android ระบุ Package Name ให้ตรงกับแอป
+ดาวน์โหลดไฟล์ google-services.json
+นำไฟล์ไปวางไว้ที่โฟลเดอร์: android/app/google-services.json
+ตรวจสอบให้แน่ใจว่าเปิดใช้งาน Firestore Database และ Authentication (Email/Password) เรียบร้อยแล้ว
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+3. การเปิดสิทธิ์อินเทอร์เน็ตสำหรับ Android
+เพื่อให้แอปสามารถดึงข้อมูลจาก Firebase และรูปภาพจาก Google Drive ได้ ให้ตรวจสอบไฟล์ android/app/src/main/AndroidManifest.xml ว่ามีคำสั่งนี้อยู่หรือไม่:
+```bash
+<uses-permission android:name="android.permission.INTERNET"/>
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🖼️การจัดการรูปภาพด้วย Google Drive (Image URL Mapping)
+แอปพลิเคชันนี้ออกแบบมาให้ประหยัดพื้นที่ Database โดยการดึงรูปภาพจาก Google Drive แทน วิธีการใช้งานมีดังนี้:
+1.สร้างโฟลเดอร์ใน Google Drive ของคุณ
+2.อัปโหลดรูปภาพที่ต้องการ (เช่น รููปห้องพัก, รูปสลิป)
+3.คลิกขวาที่รูปภาพ เลือก Share (แชร์)
+4.เปลี่ยนสิทธิ์การเข้าถึงเป็น "Anyone with the link" (ทุกคนที่มีลิงก์)
+5.กด Copy link (คัดลอกลิงก์)
+6.นำลิงก์ไปวางในช่องกรอกข้อมูลของแอป (เช่น ช่องเพิ่มรูปห้องพัก) ระบบจะทำการดึงรูปมาแสดงผลเองโดยอัตโนมัติ!
+
+การรันแอปพลิเคชันและการอัปเดตไอคอน
+ทดสอบแอปพลิเคชันบน Emulator:
+เปิด Android Studio เริ่มต้น Emulator แล้วรันคำสั่ง:
+```bash
+flutter run
+```
+
+📱การอัปเดตไอคอนแอป (Adaptive Icons):
+หากมีการเปลี่ยนรูปภาพโลโก้ใน assets/images/app_icon.png ให้รันคำสั่งนี้เพื่ออัปเดตไอคอนในระบบ Android และ iOS:
+```bash
+dart run flutter_launcher_icons
+```
+การสร้างไฟล์ APK สำหรับใช้งานจริง (Build Release)
+เมื่อต้องการนำแอปพลิเคชันไปติดตั้งบนสมาร์ทโฟน Android เครื่องจริง ให้รันคำสั่ง:
+```bash
+flutter build apk --release --split-per-abi
+```
+📦ไฟล์ APK จะถูกสร้างและจัดเก็บไว้ที่:
+build/app/outputs/flutter-apk/app-release.apk
+(สามารถนำไฟล์นี้ส่งให้ผู้เช่าหรือเจ้าของหอพักติดตั้งได้ทันที)
