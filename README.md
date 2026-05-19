@@ -83,3 +83,14 @@ flutter build apk --release --split-per-abi
 📦ไฟล์ APK จะถูกสร้างและจัดเก็บไว้ที่:
 build/app/outputs/flutter-apk/app-release.apk
 (สามารถนำไฟล์นี้ส่งให้ผู้เช่าหรือเจ้าของหอพักติดตั้งได้ทันที)
+
+## 📥 ดาวน์โหลดแอปพลิเคชัน (Download APK)
+
+คุณสามารถดาวน์โหลดแอป Roomy เวอร์ชันล่าสุดไปติดตั้งบนมือถือ Android ได้ที่ปุ่มด้านล่างนี้เลยครับ:
+
+[![Download APK](https://img.shields.io/badge/Download-APK_Latest-2ea44f?style=for-the-badge&logo=android)](https://github.com/sahapornsalee/Roomy/releases/latest)
+
+**วิธีติดตั้ง:**
+1. กดที่ปุ่มด้านบนเพื่อไปที่หน้า Release
+2. ในหัวข้อ **Assets** ให้คลิกโหลดไฟล์ `app-release.apk`
+3. นำไฟล์ไปเปิดในมือถือ Android เพื่อติดตั้ง (หากระบบเตือนเรื่องความปลอดภัย ให้ตั้งค่าอนุญาต "Install from unknown sources")
