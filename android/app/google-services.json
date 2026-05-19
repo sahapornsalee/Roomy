@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630190439113",
+    "project_id": "roomy-27216",
+    "storage_bucket": "roomy-27216.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630190439113:android:cfc38202c531ab78f4eb18",
+        "android_client_info": {
+          "package_name": "com.example.roomy_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMEIci7eTfw4CTSGX7EtS1BId4s8cbRE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
