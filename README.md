@@ -94,3 +94,7 @@ build/app/outputs/flutter-apk/app-release.apk
 1. กดที่ปุ่มด้านบนเพื่อไปที่หน้า Release
 2. ในหัวข้อ **Assets** ให้คลิกโหลดไฟล์ `app-release.apk`
 3. นำไฟล์ไปเปิดในมือถือ Android เพื่อติดตั้ง (หากระบบเตือนเรื่องความปลอดภัย ให้ตั้งค่าอนุญาต "Install from unknown sources")
+
+admin pass
+admin@gmail.com 
+admin123
